@@ -20,6 +20,7 @@ public class HellobootApplication {
 		// Spring Container
 		GenericApplicationContext applicationContext = new GenericApplicationContext();
 		applicationContext.registerBean(HelloController.class); // Bean 등록
+		applicationContext.registerBean(SimpleHelloService.class);
 		applicationContext.refresh(); // Bean 초기화
 
 		// Servlet Container
