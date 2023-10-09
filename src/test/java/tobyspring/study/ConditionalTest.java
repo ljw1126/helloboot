@@ -39,7 +39,7 @@ public class ConditionalTest {
 
 
     @Retention(RetentionPolicy.RUNTIME)
-    @Target(ElementType.TYPE)
+    @Target({ElementType.TYPE, ElementType.METHOD})
     @Conditional(BooleanCondition.class)
     @interface BooleanConditional {
         boolean value();
