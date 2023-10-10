@@ -1,6 +1,5 @@
 package tobyspring.config.autoconfig;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
@@ -12,14 +11,12 @@ import tobyspring.config.MyAutoConfiguration;
 @ConditionalMyOnClass("org.apache.catalina.startup.Tomcat")
 public class TomcatWebServerConfig {
 
-    @Value("${contextPath}")
-    String contextPath;
-
     @Bean("tomcatWebServerFactory")
     @ConditionalOnMissingBean
-    public ServletWebServerFactory servletWebServerFactory() {
+    public ServletWebServerFactory servletWebServerFactory(ServerProperties serverProperties) {
         TomcatServletWebServerFactory factory = new TomcatServletWebServerFactory();
-        factory.setContextPath(contextPath);
+        factory.setContextPath(serverProperties.getContextPath());
+        factory.setPort(serverProperties.getPort());
         return factory;
     }
 }
