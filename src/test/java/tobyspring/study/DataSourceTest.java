@@ -13,9 +13,7 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-@ExtendWith(SpringExtension.class) // spring context 이용하는 spring container 테스트 가능
-@ContextConfiguration(classes = HellobootApplication.class) // 빈을 로딩할 정보 가져옴, 시작점
-@TestPropertySource("classpath:/application.properties")
+@HellobootTest
 public class DataSourceTest {
     @Autowired
     DataSource dataSource;
