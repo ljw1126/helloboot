@@ -14,9 +14,6 @@ public class HelloRepositoryTest {
     @Autowired
     HelloRepository helloRepository;
 
-    @Autowired
-    JdbcTemplate jdbcTemplate;
-
     @Test
     void findHelloFailed() {
         assertThat(helloRepository.findHello("Toby")).isNull();
